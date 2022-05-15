@@ -12,7 +12,8 @@ namespace StatefulWebComparer.Client
     {
         public async static Task<string> Invoke(string left, string right, string id = "id")
         {
-            // Must run everything under one client to maintain session, otherwise the data to diff would not survive the endpoint call
+            // Must run everything under one client to maintain session, otherwise the data to diff would not survive the endpoint call.
+            // Data is stored in Session, to maintain data over session lifetime it would require persistent storage - databes, filesystem, ...
             var client = new HttpClient() { BaseAddress = new Uri("http://localhost:5292") };
 
             var leftEncoded = EncodeData(left);
