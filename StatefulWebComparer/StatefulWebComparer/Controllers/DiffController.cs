@@ -12,6 +12,7 @@ namespace StatefulWebComparer.Controllers
         [Route("{id}/left")]
         public void Left([FromRoute]string id, [FromBody]CustomType customType)
         {
+            // Keep left string to compare in session with key left and ID to distinguish it by ID
             HttpContext.Session.SetString($"left-{id}", customType.Input);
         }
 
@@ -19,6 +20,7 @@ namespace StatefulWebComparer.Controllers
         [Route("{id}/right")]
         public void Right([FromRoute]string id, [FromBody]CustomType customType)
         {
+            // Keep left string to compare in session with key left and ID to distinguish it by ID
             HttpContext.Session.SetString($"right-{id}", customType.Input);
         }
 

@@ -12,6 +12,7 @@ namespace StatefulWebComparer.Client
     {
         public async static Task<string> Invoke(string left, string right, string id = "id")
         {
+            // Must run everything under one client to maintain session, otherwise the data to diff would not survive the endpoint call
             var client = new HttpClient() { BaseAddress = new Uri("http://localhost:5292") };
 
             var leftEncoded = EncodeData(left);
@@ -24,6 +25,7 @@ namespace StatefulWebComparer.Client
             return await result.Content.ReadAsStringAsync();
         }
 
+        // Compare values and print out message.
         public static void Assert(string expected, string result)
         {
             if (expected != result)
@@ -36,6 +38,7 @@ namespace StatefulWebComparer.Client
             }
         }
 
+        // Encode data as Json int Base64
         private static string EncodeData(string input)
         {
             var inputObject = new CustomType(input);

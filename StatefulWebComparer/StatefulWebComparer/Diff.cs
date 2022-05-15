@@ -19,7 +19,7 @@ namespace StatefulWebComparer
             {
                 return "Inputs were equal.";
             }
-            else if (left.Length == right.Length)// should have the same length
+            else if (left.Length == right.Length) // should have the same length
             {
                 for (int i = 0; i < left.Length; i++)
                 {
